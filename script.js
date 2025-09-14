@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-const API_KEY = "AIzaSyAnDCOr3eqXztj2wvu9dJVLQVTrUGIKQ7U"; 
-const FOLDER_ID = "186Ena2wZxIpTh6uVh3IoXGZcC3K-gP8t"; 
+const API_KEY = "AIzaSyD3UsXgp2Rj-UYGFKQ-eIAd0GF0M5HydbI"; 
+const FOLDER_ID = "1e55or3BL_1TJb-aDla2w4cZhUbFSNzpH"; 
 
 const gallery = document.getElementById("gallery");
 
