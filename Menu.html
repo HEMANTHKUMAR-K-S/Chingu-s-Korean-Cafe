@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Style */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #382952;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        /* Navbar */
+        header {
+            box-shadow: 0 6px 4px rgba(5, 4, 8, 0.2);
+            position: sticky;
+            background-color: #382952;
+            width: 100%;
+            top: 0;
+            padding: 10px 0;
+            animation: headerSlideDown 0.8s ease;
+            z-index: 1000;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 10px;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+                "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+            font-weight: normal;
+        }
+
+        .logo-subtitle {
+            margin-left: 20px;
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        /* Navigation Menu */
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-link li {
+            margin-left: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-link li:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-link li a {
+            color: #fff;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link li a:hover {
+            background-color: #4b346d;
+        }
+
+        /* Book Table Button */
+        .book-table-button {
+            background: linear-gradient(90deg, #91427c 0%, #7a63e4 100%);
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
+            color: #fff;
+        }
+
+        .book-table-button a {
+            color: #fff;
+        }
+
+        .mobile-book-table-button {
+            display: none;
+            background: linear-gradient(90deg, #91427c 0%, #7a63e4 100%);
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
+            transition: background 0.3s;
+        }
+
+        .mobile-book-table-button,
+        .book-table-button:hover {
+            background: linear-gradient(90deg, #7a63e4 0%, #91427c 100%);
+        }
+
+        .mobile-book-table-button a {
+            color: #fff;
+        }
+
+        .menu-toggle {
+            font-size: 1.3rem;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-heading h1 {
+            font-size: 2.5rem;
+            color: #ff92c2;
+        }
+
+        .menu-heading p {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background: #382952;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                transition: left 0.3s ease;
+            }
+
+            .menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link li {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .book-table-button {
+                display: none;
+            }
+
+            .mobile-book-table-button {
+                display: block;
+            }
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #382952;
+            color: #fff;
+        }
+
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .menu-card {
+            background-color: #4a356b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 15px;
+        }
+
+        .menu-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: #ff92c2;
+        }
+
+        .menu-content p {
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2b1d45;
+            color: #aaa;
+        }
+    </style>
+</head>
+<header>
+    <nav>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="./assets/images/Chingus_logo-bg-removed.png" alt="Chingu's Korean Cafe Logo" class="logo-img"
+                onerror="this.src='https://via.placeholder.com/50?text=Logo'">
+            <a href="index.html">
+                <h2>Chingu's Korean Cafe</h2>
+                <div class="logo-subtitle">K-VIBES . COFFEE . DESSERT</div>
+            </a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="menu" id="menu">
+            <ul class="nav-link">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#menu-section">MENU</a></li>
+                <li><a href="#events">EVENTS</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#reserve">RESERVE</a></li>
+                <li><a href="#visit">VISIT</a></li>
+            </ul>
+            <div class="mobile-book-table-button">
+                <a href="booktable.html" class="order-btn">BOOK A TABLE</a>
+            </div>
+        </div>
+
+        <!-- Book Table -->
+        <div class="book-table-button">
+            <a href="booktable.html" class="order-btn">BOOK A TABLE</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+<section class="menu-container">
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Korean Fried Rice.jpg" alt="Korean Fried Rice">
+        <div class="menu-content">
+            <h3>Korean Fried Rice</h3>
+            <p>Classic stir-fried rice with Korean spices and veggies.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/bbn_fix.jpg" alt="Black Bean Chicken Noodles">
+        <div class="menu-content">
+            <h3>Black Bean Chicken Noodles</h3>
+            <p>Noodles in a savory black bean sauce with tender chicken.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Chicken Bibimbap.jpeg" alt="Chicken Bibimbap">
+        <div class="menu-content">
+            <h3>Chicken Bibimbap</h3>
+            <p>Rice bowl topped with chicken, veggies, and spicy gochujang.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/cheesy-tokbokki-korean-traditional-food-black-board-background-lunch-dish.jpg"
+            alt="Tteokbokki">
+        <div class="menu-content">
+            <h3>Tteokbokki</h3>
+            <p>Chewy rice cakes simmered in sweet & spicy chili sauce.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Rice Cake Skewers.jpeg" alt="Rice Cake Skewers">
+        <div class="menu-content">
+            <h3>Rice Cake Skewers</h3>
+            <p>Grilled rice cakes on skewers with spicy Korean glaze.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Corn dog.jpeg" alt="Corn Dog">
+        <div class="menu-content">
+            <h3>Corn Dog</h3>
+            <p>Golden fried Korean-style corn dog with cheesy filling.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Fire Cheese Chicken.jpeg" alt="Fire Cheese Chicken">
+        <div class="menu-content">
+            <h3>Fire Cheese Chicken</h3>
+            <p>Spicy chicken topped with gooey melted cheese.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Prawns Skillet.jpeg" alt="Prawns Skillet">
+        <div class="menu-content">
+            <h3>Prawns Skillet</h3>
+            <p>Sizzling prawns skillet cooked with garlic, herbs, and Korean spices.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Korean C fRY.jpeg" alt="Korean C Fry rice">
+        <div class="menu-content">
+            <h3>Korean C Fry</h3>
+            <p>Crispy Korean-style fried chicken with savory glaze.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/blooming tea.jpeg" alt="Blooming Tea">
+        <div class="menu-content">
+            <h3>Blooming Tea</h3>
+            <p>Delightful floral tea that blossoms in your cup.</p>
+        </div>
+    </div>
+    <div class="menu-card">
+        <img src="/assets/images/Soya Garlic Chicken.jpeg" alt="Soya Garlic Chicken">
+        <div class="menu-content">
+            <h3>Soya Garlic Chicken</h3>
+            <p>Tender chicken glazed with soy sauce and roasted garlic.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Red & White Chicken Fusion Pasta.jpeg"
+            alt="Red & White Chicken Fusion Pasta">
+        <div class="menu-content">
+            <h3>Red & White Chicken Fusion Pasta</h3>
+            <p>A creamy and spicy mix of red & white sauces with chicken.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Mushroom Porridge.jpeg" alt="Mushroom Porridge">
+        <div class="menu-content">
+            <h3>Mushroom Porridge</h3>
+            <p>Warm Korean porridge cooked with fresh mushrooms.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Udon Noodles (Chicken).jpeg"
+            alt="Udon Noodles (Chicken)">
+        <div class="menu-content">
+            <h3>Udon Noodles (Chicken)</h3>
+            <p>Thick chewy noodles served in a rich chicken broth.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/" alt="Korean Fruit Panch">
+        <div class="menu-content">
+            <h3>Korean Fruit Panch</h3>
+            <p>Refreshing Korean-style fruit punch with seasonal fruits.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/chicken kimbap_new.jpg" alt="Chicken Kimbap">
+        <div class="menu-content">
+            <h3>Chicken Kimbap</h3>
+            <p>Classic Korean-style seaweed rice roll stuffed with chicken.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/prawn_bimpap_new.jpg" alt="Prawn Kimbap">
+        <div class="menu-content">
+            <h3>Prawn Kimbap</h3>
+            <p>Kimbap roll with prawns, fresh vegetables, and sesame seeds.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Chingus layered Desseat.jpeg"
+            alt="Chingu's Layered Dessert">
+        <div class="menu-content">
+            <h3>Chingu's Layered Dessert</h3>
+            <p>Sweet layered Korean dessert with cream and fruits.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/half_fried_egg.jpg" alt="Half Fried Egg">
+        <div class="menu-content">
+            <h3>Half Fried Egg</h3>
+            <p>Sunny-side-up egg, perfect for topping Korean rice bowls.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Cheese Korean Ramyeon.jpeg" alt="Cheese Korean Ramyeon">
+        <div class="menu-content">
+            <h3>Cheese Korean Ramyeon</h3>
+            <p>Chewy noodles in spicy broth topped with melted cheese.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/Chingu's Korean Cafe/Frontend/assets/images/Chicken Rice Balls.jpeg" alt="Chicken Rice Balls">
+        <div class="menu-content">
+            <h3>Chicken Rice Balls</h3>
+            <p>Soft rice balls filled with seasoned chicken and seaweed.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/assets/images/cheesy chicken creamy pasta.jpeg" alt="Cheesy Chicken Creamy Pasta">
+        <div class="menu-content">
+            <h3>Cheesy Chicken Creamy Pasta</h3>
+            <p>Rich creamy pasta tossed with chicken and cheese.</p>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="/assets/images/Pop Corn Bites Clutches.jpeg" alt="Pop Corn Bites Clutches">
+        <div class="menu-content">
+            <h3>Pop Corn Bites Clutches</h3>
+            <p>Crispy and crunchy popcorn chicken bites.</p>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2025 Chingu's Korean Cafe | All Rights Reserved</p>
+</footer>
+
+<script>
+    // You can add interactive features later if needed
+    console.log("Menu Page Loaded");
+</script>
+<script>
+    function toggleMenu() {
+        document.getElementById('menu').classList.toggle('active');
+    }
+</script>
+
+</body>
+
+</html>

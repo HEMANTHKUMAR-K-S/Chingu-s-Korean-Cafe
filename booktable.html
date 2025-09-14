@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Table | Chingu Korean Cafe</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <!-- Font Awesome CDN for menu toggle icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+       <header>
+        <nav>
+            <div class="logo">
+                <img src="./assets/images/Chingus_logo-bg-removed.png" alt="Chingu's Korean Cafe Logo" class="logo-img">
+                <a href="index.html">
+                    <h2>Chingus Korean Cafe</h2>
+                    <div class="logo-subtitle">K-VIBES . COFFEE . DESSERT</div>
+                </a>
+
+            </div>
+
+            <div class="menu" id="menu">
+                <ul class="nav-link">
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">MENU</a></li>
+                    <li><a href="#">EVENTS</a></li>
+                    <li><a href="#">GALLERY</a></li>
+                    <li><a href="#">RESERVE</a></li>
+                    <li><a href="#">VISIT</a></li>
+                </ul>
+                <!-- <div class="mobile-book-table-button">
+                    <a href="booktable.html" class="order-btn">BOOK A TABLE</a>
+                </div> -->
+            </div>
+            <!-- <div class="book-table-button">
+                <a href="booktable.html" class="order-btn">BOOK A TABLE</a>
+            </div> -->
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    <section class="booktable-section">
+        <div class="overlay">
+            <div class="table-hero">
+                <h1>Book Your Table</h1>
+                <p>Book your spot in just a few clicks 🍽️</p>
+                <p>
+                    Open Hours: 09:00 AM - 10:00 PM <br>
+                </p>
+
+            </div>
+
+            <div class="reservation-card">
+                <h2>Book a Table</h2>
+                <form class="reservation-form" id="reservationForm">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number" required>
+
+                    <div class="reservation-form-row">
+                        <input type="date" required>
+                        <input type="time" required>
+                    </div>
+
+                    <select required>
+                        <option value="">Number of Guests</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5+</option>
+                    </select>
+
+                    <select required>
+                        <option value="">Family Reservation?</option>
+                        <option value="yes">Yes (Family)</option>
+                        <option value="no">No (Individual/Group)</option>
+                    </select>
+
+                    <textarea placeholder="Special Requests"></textarea>
+
+                    <button class="book-table-button" type="submit">Book Now</button>
+                </form>
+            </div>
+            <div class="call-container">
+                <p>If you encounter any issues while booking or face errors, please don't hesitate to call us for
+                    assistance.</p>
+                <a href="tel:+910000000000" class="call-btn">📞 Call Now</a>
+            </div>
+        </div>
+    </section>
+        <footer>
+        <p>&copy; 2025 Chingu’s Korean Cafe. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+    <script src="script.js">
+    </script>
+
+</body>
+
+</html>
