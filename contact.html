@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Chingu's Korean Cafe</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #382952;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navbar */
+
+        button {
+            outline: none;
+            border: none;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+        @keyframes headerSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            box-shadow: 0 6px 4px rgba(5, 4, 8, 0.2);
+            position: sticky;
+            background-color: #382952;
+            width: 100%;
+            top: 0;
+            padding: 10px 0;
+            animation: headerSlideDown 0.8s ease;
+            z-index: 1000;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+        }
+        h2,
+        .heading {
+            font-family: 'Dancing Script', cursive;
+            color: #d46a7e;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 10px;
+            font-weight: normal;
+            font-family: 'Dancing Script', cursive;
+
+
+        }
+
+        .logo-subtitle {
+            margin-left: 20px;
+            color: white;
+            font-size: 0.7rem;
+            font-family: 'Dancing Script', cursive;
+
+        }
+
+        /* Navigation Menu */
+        .menu {
+            display: flex;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+
+        }
+
+        .nav-link {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-link li {
+            margin-left: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-link li:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-link li a {
+            color: #fff;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link li a:hover {
+            background-color: #4b346d;
+        }
+
+        /* Book Table Button */
+        .book-table-button {
+            background: linear-gradient(90deg, #91427c 0%, #7a63e4 100%);
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
+            color: #fff;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .book-table-button a {
+            color: #fff;
+        }
+
+        .mobile-book-table-button {
+            display: none;
+            background: linear-gradient(90deg, #91427c 0%, #7a63e4 100%);
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
+            transition: background 0.3s;
+            
+        }
+
+        .mobile-book-table-button,
+        .book-table-button:hover {
+            background: linear-gradient(90deg, #7a63e4 0%, #91427c 100%);
+        }
+
+        .mobile-book-table-button a {
+            color: #fff;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            font-size: 1.3rem;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        /* Contact Page Layout */
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 60px 30px;
+            background-color: #382952;
+        }
+
+        .contact-left {
+            flex: 1 1 450px;
+            padding: 30px;
+        }
+
+        .contact-left h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #f4a9e2 0%, #bfaaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-left p,
+        .contact-left form {
+            font-style: italic;
+        }
+
+        .contact-left p {
+            margin-bottom: 30px;
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #f4a9e2 0%, #bfaaff 100%);
+            color: #2b1d45;
+            font-size: 1rem;
+            font-family: inherit;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.10);
+            transition: box-shadow 0.2s, background 0.3s;
+            margin-bottom: 0;
+        }
+        .form-row input:focus {
+            outline: none;
+            background: linear-gradient(90deg, #fff 0%, #e9e4ff 100%);
+            box-shadow: 0 0 0 2px #bfaaff;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+            border: none;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 1rem;
+            padding: 14px 16px;
+            font-family: inherit;
+            transition: box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.08);
+        }
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #bfaaff;
+            background-color: #fff;
+        }
+
+        .contact-form button {
+            width: 140px;
+            background-color: #f4a9e2;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #2b1d45;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #ff4ea0;
+        }
+
+        .contact-right {
+            flex: 1 1 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .contact-right img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2b1d45;
+            color: #aaa;
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .contact-section {
+                flex-direction: column;
+            }
+
+            .contact-right img {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">
+                <img src="./assets/images/Chingus_logo-bg-removed.png" alt="Chingu's Korean Cafe Logo" class="logo-img"
+                    onerror="this.src='https://via.placeholder.com/50?text=Logo'">
+                <a href="index.html">
+                    <h2>Chingu's Korean Cafe</h2>
+                    <div class="logo-subtitle">K-VIBES . COFFEE . DESSERT</div>
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <div class="menu" id="menu">
+                <ul class="nav-link">
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#menu-section">MENU</a></li>
+                    <li><a href="#events">EVENTS</a></li>
+                    <li><a href="Gallery.html">GALLERY</a></li>
+                    <li><a href="#reserve">RESERVE</a></li>
+                    <li><a href="#visit">VISIT</a></li>
+                </ul>
+                <div class="mobile-book-table-button">
+                    <a href="booktable.html" class="order-btn">BOOK A TABLE</a>
+                </div>
+            </div>
+
+            <!-- Book Table -->
+            <div class="book-table-button">
+                <a href="booktable.html" class="order-btn">BOOK A TABLE</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-left">
+            <h2>Get in Touch</h2>
+            <p>Have a question or feedback?<br>Fill out the form below, and we’ll respond promptly!</p>
+            <form class="contact-form">
+                <div class="form-row">
+                    <input type="text" placeholder="Your name" required />
+                    <input type="email" placeholder="Email address" required />
+                </div>
+                <div class="form-row">
+                    <input type="tel" placeholder="Phone number" required />
+                    <input type="text" placeholder="Queries" />
+                </div>
+                <textarea placeholder="Your message" required></textarea>
+                <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+
+        <div class="contact-right">
+            <img src="/Chingu's Korean Cafe/Frontend/assets/images/cafecontactus.jpg" alt="Contact Image" />
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Chingu's Korean Cafe | All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>

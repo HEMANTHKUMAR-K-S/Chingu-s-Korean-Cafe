@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #382952;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            color: #ff92c2;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        /* Filter Buttons */
+        .filter-bar {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ff92c2;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #ff92c2;
+            color: #2b1d45;
+            transform: scale(1.05);
+        }
+
+        /* Category Title */
+        .category-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            color: #ff92c2;
+            display: none;
+        }
+
+        /* Gallery Grid */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            display: none;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item.show {
+            display: block;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 15px;
+            cursor: pointer;
+            display: block;
+        }
+
+        .caption {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #000;
+            /* change as needed */
+        }
+
+        
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 2rem;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        /* Load More */
+        .load-more {
+            display: block;
+            margin: 30px auto;
+            background: #ff92c2;
+            color: #2b1d45;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .load-more:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2b1d45;
+            color: #aaa;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Our Gallery</h1>
+        <p>Special memories from our café – birthdays, happy moments & milestones</p>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+        <button class="filter-btn" onclick="filterGallery('birthday')">Jungkook’s Birthday</button>
+        <button class="filter-btn" onclick="filterGallery('happy')">Happy Moments</button>
+        <button class="filter-btn" onclick="filterGallery('milestones')">Milestones</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <h2 class="category-title" id="category-title">All</h2>
+    <section class="gallery-container" id="gallery">
+        <!-- Jimin’s Birthday -->
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/bday cake.jpeg" alt="Birthday Cake">
+            </a>
+            <div class="caption">Birthday Cake</div>
+        </div>
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/cafeparty.jpeg" alt="Cafe Party">
+            </a>
+            <div class="caption">Cafe Party</div>
+        </div>
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/fans celebrations.jpeg" alt="Fans Celebration">
+            </a>
+            <div class="caption">Fans Celebration</div>
+        </div>
+
+        <!-- Happy Moments -->
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/frndsatcafe.jpg" alt="Friends At Cafe">
+            </a>
+            <div class="caption">Friends At Cafe</div>
+        </div>
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/enjoyong food.jpg" alt="Enjoying D\Food">
+            </a>
+            <div class="caption">Enjoying Food</div>
+        </div>
+       <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/laughter momenys.jpeg" alt="Laughter Moments">
+            </a>
+            <div class="caption">Laughter Moments</div>
+        </div>
+
+        <!-- Milestones -->
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/awardceremony.jpg" alt="Award Ceremony">
+            </a>
+            <div class="caption">Award Ceremony</div>
+        </div>
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/grand opening.jpg" alt="Grand Opening">
+            </a>
+            <div class="caption">Grand Opening</div>
+        </div>
+        <div class="gallery-item birthday">
+            <a href="#jb1">
+                <img src="/assets/images/bigevent.jpeg" alt="Big Event">
+            </a>
+            <div class="caption">Big Event</div>
+        </div>
+    </section>
+
+    <!-- Load More -->
+    <button class="load-more" onclick="loadMore()">Load More</button>
+
+    <!-- Lightboxes -->
+    <div id="jb1" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?birthday,cake"></div>
+    <div id="jb2" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?party,kpop"></div>
+    <div id="jb3" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?fans,celebration"></div>
+    <div id="hm1" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?friends,cafe"></div>
+    <div id="hm2" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?korean-food,enjoy"></div>
+    <div id="hm3" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?laughter,fun"></div>
+    <div id="ms1" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?award,celebration"></div>
+    <div id="ms2" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?grand-opening,cafe"></div>
+    <div id="ms3" class="lightbox"><a href="#" class="close-btn">✖</a><img
+            src="https://source.unsplash.com/800x600/?crowd,event"></div>
+
+    <footer>
+        <p>© 2025 Chingu's Korean Cafe | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Filtering Function
+        function filterGallery(category) {
+            let items = document.querySelectorAll('.gallery-item');
+            let buttons = document.querySelectorAll('.filter-btn');
+            let title = document.getElementById('category-title');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            title.style.display = 'block';
+            title.innerText = category === 'all' ? 'All Memories' : category.charAt(0).toUpperCase() + category.slice(1);
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.add('show');
+                } else {
+                    item.classList.remove('show');
+                }
+            });
+        }
+
+        // Load More Function
+        let visible = 4;
+        function loadMore() {
+            let items = document.querySelectorAll('.gallery-item');
+            for (let i = visible; i < visible + 4 && i < items.length; i++) {
+                items[i].classList.add('show');
+            }
+            visible += 4;
+            if (visible >= items.length) {
+                document.querySelector('.load-more').style.display = 'none';
+            }
+        }
+
+        // Show initial items
+        window.onload = () => {
+            filterGallery('all');
+            loadMore();
+        };
+    </script>
+</body>
+
+</html>

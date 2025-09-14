@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Your Table - Chingu's Korean Cafe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #382952;
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: #ff92c2;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    /* Tables Section */
+    .tables-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .tables-section h2 {
+      margin-bottom: 20px;
+      color: #ff92c2;
+    }
+
+    .tables {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+    }
+
+    .table {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid #ff92c2;
+      padding: 30px 0;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .table:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.2);
+    }
+
+    .table.selected {
+      background: #ff92c2;
+      color: #2b1d45;
+      font-weight: bold;
+    }
+
+    /* Booking Form Section */
+    .booking-section {
+      max-width: 600px;
+      margin: 30px auto;
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .booking-form h2 {
+      margin-bottom: 15px;
+      color: #ff92c2;
+      text-align: center;
+    }
+
+    .booking-form label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .booking-form input,
+    .booking-form select {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 12px auto;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .booking-form button {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 18px auto 0 auto;
+      background: #ff92c2;
+      color: #2b1d45;
+      border: none;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .booking-form button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contact Info */
+    .contact-info {
+      max-width: 600px;
+      margin: 25px auto;
+      background: #2b1d45;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .contact-info h3 {
+      color: #ff92c2;
+      margin-bottom: 10px;
+    }
+
+    .contact-info p {
+      margin: 6px 0;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2b1d45;
+      color: #aaa;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reserve Your Table</h1>
+    <p>Pick your favorite spot and book your table at Chingu's Korean Cafe</p>
+  </header>
+
+  <!-- Tables Section -->
+  <div class="tables-section">
+    <h2>Available Tables</h2>
+    <div class="tables">
+      <div class="table" data-table="1">Table 1</div>
+      <div class="table" data-table="2">Table 2</div>
+      <div class="table" data-table="3">Table 3</div>
+      <div class="table" data-table="4">Table 4</div>
+      <div class="table" data-table="5">Table 5</div>
+      <div class="table" data-table="6">Table 6</div>
+      <div class="table" data-table="7">Table 7</div>
+      <div class="table" data-table="8">Table 8</div>
+    </div>
+  </div>
+
+  <!-- Booking Form Section -->
+  <div class="booking-section">
+    <form class="booking-form">
+      <h2>Book a Table</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter your phone" required>
+
+      <label for="date">Date</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Time</label>
+      <input type="time" id="time" required>
+
+      <label for="people">Number of People</label>
+      <select id="people" required>
+        <option value="">Select</option>
+        <option value="1">1 Person</option>
+        <option value="2">2 People</option>
+        <option value="3">3 People</option>
+        <option value="4">4 People</option>
+        <option value="5">5 People</option>
+        <option value="6">6 People</option>
+      </select>
+
+      <label for="table">Selected Table</label>
+      <input type="text" id="table" placeholder="Choose from table layout" readonly required>
+
+      <button type="submit">Confirm Reservation</button>
+    </form>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="contact-info">
+    <h3>Contact Us</h3>
+    <p>📍 Address: 123 Seoul Street, City Center</p>
+    <p>📞 Phone: +91 98765 43210</p>
+    <p>📧 Email: hello@chinguscafe.com</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Chingu's Korean Cafe | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Select Table
+    const tables = document.querySelectorAll('.table');
+    const tableInput = document.getElementById('table');
+
+    tables.forEach(table => {
+      table.addEventListener('click', () => {
+        tables.forEach(t => t.classList.remove('selected'));
+        table.classList.add('selected');
+        tableInput.value = "Table " + table.dataset.table;
+      });
+    });
+
+    // Form Submission
+    document.querySelector('.booking-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("✅ Reservation Confirmed!\n\n" +
+        "Name: " + document.getElementById('name').value +
+        "\nDate: " + document.getElementById('date').value +
+        "\nTime: " + document.getElementById('time').value +
+        "\nTable: " + document.getElementById('table').value +
+        "\n\n🍽 Happy dining! Enjoy your day 💖");
+    });
+  </script>
+</body>
+</html>
