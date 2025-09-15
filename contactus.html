@@ -9,6 +9,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
 
@@ -66,6 +68,10 @@
             animation: headerSlideDown 0.8s ease;
             z-index: 1000;
         }
+   h1,
+        h2,
+        .heading {
+            font-family: 'Dancing Script', cursive;}
 
         /* Navbar */
         nav {
@@ -75,46 +81,37 @@
             padding: 0 20px;
             height: 60px;
         }
-        h2,
-        .heading {
-            font-family: 'Dancing Script', cursive;
-            color: #d46a7e;
-        }
+
         .logo {
             display: flex;
             align-items: center;
         }
 
         .logo img {
-            width: 100px;
+            width: 75px;
+            /* increased from 50px */
             height: auto;
             object-fit: contain;
         }
 
         .logo h2 {
             color: white;
-            font-size: 1.5rem;
-            margin-left: 10px;
+            font-size: 1.6rem;
+            margin-left: 12px;
             font-weight: normal;
-            font-family: 'Dancing Script', cursive;
-
-
         }
 
         .logo-subtitle {
             margin-left: 20px;
             color: white;
-            font-size: 0.7rem;
-            font-family: 'Dancing Script', cursive;
-
+            font-size: 0.75rem;
+             font-family: 'Dancing Script', cursive;
         }
 
         /* Navigation Menu */
         .menu {
             display: flex;
             align-items: center;
-            font-family: 'Dancing Script', cursive;
-
         }
 
         .nav-link {
@@ -134,13 +131,30 @@
         .nav-link li a {
             color: #fff;
             font-size: 1rem;
-            padding: 8px 12px;
-            border-radius: 5px;
+            padding: 6px 0;
             transition: all 0.3s ease;
+            position: relative;
+             font-family: 'Dancing Script', cursive;
         }
 
-        .nav-link li a:hover {
-            background-color: #4b346d;
+        /* Gradient Hover Effect for Nav Links */
+        .nav-link li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+            border-radius: 3px;
+        }
+
+        .nav-link li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         /* Book Table Button */
@@ -151,8 +165,20 @@
             font-size: 1rem;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
+        }
+
+        .book-table-button a {
             color: #fff;
-            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Book Table Button */
+        .book-table-button {
+            background: linear-gradient(90deg, #91427c 0%, #7a63e4 100%);
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
         }
 
         .book-table-button a {
@@ -168,7 +194,6 @@
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(122, 99, 228, 0.15);
             transition: background 0.3s;
-            
         }
 
         .mobile-book-table-button,
@@ -186,6 +211,84 @@
             color: #fff;
             cursor: pointer;
             display: none;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background: #382952;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                transition: left 0.3s ease;
+            }
+
+            .menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link li {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo h2 {
+                color: white;
+                font-size: 1rem;
+                margin-left: 10px;
+
+                font-weight: normal;
+            }
+
+            .logo-subtitle {
+                margin-left: 20px;
+                color: white;
+                font-size: 0.5rem;
+            }
+
+            .book-table-button {
+                display: none;
+            }
+
+            .mobile-book-table-button {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            font-size: 1.3rem;
+            color: #fff;
+            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
