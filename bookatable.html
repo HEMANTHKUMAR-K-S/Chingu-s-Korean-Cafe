@@ -9,7 +9,6 @@
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #382952;
-      color: #fff;
     }
 
     header {
@@ -69,57 +68,108 @@
       font-weight: bold;
     }
 
-    /* Booking Form Section */
+    /* Modern Booking Form Section */
     .booking-section {
       max-width: 600px;
       margin: 30px auto;
       background: rgba(255,255,255,0.08);
       padding: 25px;
-      border-radius: 12px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px 0 rgba(40, 20, 60, 0.15);
     }
 
     .booking-form h2 {
       margin-bottom: 15px;
       color: #ff92c2;
       text-align: center;
+      letter-spacing: 1px;
     }
 
     .booking-form label {
       display: block;
-      margin-top: 12px;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #ffb6e6;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     .booking-form input,
-    .booking-form select {
+    .booking-form textarea {
       width: 100%;
       max-width: 500px;
       display: block;
-      margin: 0 auto 12px auto;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
+      margin: 0 auto 18px auto;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1.5px solid #ffb6e6;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1.08rem;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(40, 20, 60, 0.07);
+      resize: vertical;
+    }
+ .booking-form select {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 18px auto;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1.5px solid #ffb6e6;
+      background: rgba(255,255,255,0.15);
+      color: #2b1d45;
+      font-size: 1.08rem;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(40, 20, 60, 0.07);
+      resize: vertical;
+    }
+    .booking-form input:focus,
+    .booking-form select:focus,
+    .booking-form textarea:focus {
+      border: 2px solid #ff92c2;
+      background: rgba(255,255,255,0.22);
+      box-shadow: 0 0 0 2px #ff92c244;
+    }
+
+    .booking-form input[readonly] {
+      background: rgba(255,255,255,0.08);
+      color: #ffb6e6;
+      cursor: not-allowed;
+      border-style: dashed;
+    }
+
+    .booking-form textarea {
+      min-height: 80px;
+      max-height: 200px;
+      font-family: inherit;
     }
 
     .booking-form button {
       width: 100%;
       max-width: 500px;
       display: block;
-      margin: 18px auto 0 auto;
-      background: #ff92c2;
+      margin: 22px auto 0 auto;
+      background: linear-gradient(90deg, #ff92c2 60%, #ffb6e6 100%);
       color: #2b1d45;
       border: none;
-      padding: 12px;
-      font-size: 1.1rem;
-      border-radius: 10px;
+      padding: 14px;
+      font-size: 1.15rem;
+      border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px 0 rgba(40, 20, 60, 0.10);
+      transition: transform 0.18s, box-shadow 0.18s;
     }
 
     .booking-form button:hover {
-      transform: scale(1.05);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 18px 0 rgba(255,146,194,0.18);
     }
 
     /* Contact Info */
@@ -189,7 +239,7 @@
       <label for="time">Time</label>
       <input type="time" id="time" required>
 
-      <label for="people">Number of People</label>
+      <label class="select-people" for="people">Number of People</label>
       <select id="people" required>
         <option value="">Select</option>
         <option value="1">1 Person</option>
